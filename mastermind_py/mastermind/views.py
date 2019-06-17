@@ -32,5 +32,15 @@ class MastermindViewset(viewsets.ViewSet):
 
 
 class GuessesViewset(viewsets.ViewSet):
-    def create(self, id):
-        data, errors = GuessSchema().load()
+    def create(self, request, id):
+        data, errors = GuessSchema().load(request.data)
+        if errors:
+            raise ValidationError(errors)
+
+        game = Games().get(id)
+        game.add_guess(data['code'])
+        Games().save(game)
+
+        result, _ = GameSchema().dump(game)
+
+        return Response(status=status.HTTP_201_CREATED, data=result)

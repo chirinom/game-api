@@ -75,7 +75,13 @@ class Game:
             self.status = GameStatus.RUNNING
 
     def _feedback(self, code):
-        return 4, 0
+        zipped_code = zip(code, self.secret_code)
+        black_pegs = sum(1 for c, s in zipped_code if c == s)
+        code_counts = py_.count_by(code, lambda x: x)
+        secret_counts = py_.count_by(self.secret_code, lambda x: x)
+
+        white_pegs = sum(min(code_counts.get(c, 0), secret_counts.get(c, 0)) for c in self.colors)
+        return black_pegs, white_pegs - black_pegs
 
     @staticmethod
     def new(num_slots, num_colors, max_guesses):
