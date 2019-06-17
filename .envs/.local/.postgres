@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=mastermind_py
+POSTGRES_USER=FIaOncojTJSeAVrjjarHVOEnhOApsFYs
+POSTGRES_PASSWORD=hy4VSyUhFFGYu3zFP9t2rYcd7OWqaZqiHZa0MjolPBZENON6SAa6vOu6wgXtjIdi

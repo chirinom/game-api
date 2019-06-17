@@ -1,0 +1,5 @@
+[run]
+include = mastermind_py/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
