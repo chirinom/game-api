@@ -78,6 +78,7 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
+    'corsheaders',
     "rest_framework",
 ]
 
@@ -262,3 +263,10 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+####################################################
+# CORS                                             #
+####################################################
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_EXPOSE_HEADERS = ['Location']
