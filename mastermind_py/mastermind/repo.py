@@ -12,8 +12,7 @@ class Games:
 
         model.save()
 
-        GuessModel.objects.filter(game_id=model.id)
-
+        GuessModel.objects.filter(game_id=model.id).delete()
 
         for g in game.guesses:
             GuessModel.objects.create(code=g.code,
