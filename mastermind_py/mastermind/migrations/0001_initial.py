@@ -9,30 +9,62 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='GameModel',
+            name="GameModel",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('num_colors', models.IntegerField()),
-                ('reference', models.CharField(max_length=10, unique=True)),
-                ('num_slots', models.IntegerField()),
-                ('secret_code', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=10), size=None)),
-                ('max_guesses', models.IntegerField()),
-                ('status', models.CharField(max_length=10)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("num_colors", models.IntegerField()),
+                ("reference", models.CharField(max_length=10, unique=True)),
+                ("num_slots", models.IntegerField()),
+                (
+                    "secret_code",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.CharField(max_length=10), size=None
+                    ),
+                ),
+                ("max_guesses", models.IntegerField()),
+                ("status", models.CharField(max_length=10)),
             ],
         ),
         migrations.CreateModel(
-            name='GuessModel',
+            name="GuessModel",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=10), size=None)),
-                ('black_pegs', models.IntegerField()),
-                ('white_pegs', models.IntegerField()),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='guesses', to='mastermind.GameModel')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "code",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.CharField(max_length=10), size=None
+                    ),
+                ),
+                ("black_pegs", models.IntegerField()),
+                ("white_pegs", models.IntegerField()),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="guesses",
+                        to="mastermind.GameModel",
+                    ),
+                ),
             ],
         ),
     ]

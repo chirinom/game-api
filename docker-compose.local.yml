@@ -1,8 +1,8 @@
-version: '3'
+version: '3.9'
 
-volumes:
-  local_postgres_data: {}
-  local_postgres_data_backups: {}
+x-env-files: &default-envs
+  - ./.envs/.local/.django
+  - ./.envs/.local/.postgres
 
 services:
   django:
@@ -14,9 +14,7 @@ services:
       - postgres
     volumes:
       - .:/app
-    env_file:
-      - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
+    env_file: *default-envs
     ports:
       - "8000:8000"
     command: /start
@@ -29,7 +27,12 @@ services:
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
       - local_postgres_data_backups:/backups
-    ports:
-      - "5432:5432"
+    expose:
+      - "5432"
     env_file:
       - ./.envs/.local/.postgres
+
+
+volumes:
+  local_postgres_data:
+  local_postgres_data_backups:
