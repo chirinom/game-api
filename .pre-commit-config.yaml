@@ -1,0 +1,21 @@
+fail_fast: true
+repos:
+- hooks:
+  - id: commitizen
+    stages:
+    - commit-msg
+  repo: https://github.com/commitizen-tools/commitizen
+  rev: master
+- hooks:
+  - id: black
+  repo: https://github.com/ambv/black
+  rev: stable
+- hooks:
+  - id: flake8
+  repo: https://gitlab.com/pycqa/flake8
+  rev: 3.7.9
+- hooks:
+  - exclude: (^.*test.*|^.*/migrations/.*).py$
+    id: mypy
+  repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.910

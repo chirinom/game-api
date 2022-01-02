@@ -7,7 +7,9 @@ class GuessModel(models.Model):
     code = ArrayField(models.CharField(max_length=10))
     black_pegs = models.IntegerField(null=False)
     white_pegs = models.IntegerField(null=False)
-    game = models.ForeignKey('GameModel', on_delete=models.CASCADE, related_name='guesses')
+    game = models.ForeignKey(
+        "GameModel", on_delete=models.CASCADE, related_name="guesses"
+    )
 
 
 class GameModel(models.Model):

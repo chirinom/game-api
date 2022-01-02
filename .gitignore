@@ -330,3 +330,5 @@ mastermind_py/media/
 .env
 .envs/*
 !.envs/.local/
+
+.idea/
