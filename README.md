@@ -1,18 +1,13 @@
 ## Running the API
 
-To start up the web server, execute the following command:
+\*\*Need to have docker-compse installed in your system.
 
-```
-make up
-```
+1. Clone the game-api github respository.
 
-The API will be available at http://localhost:8000
+2. In project root, execute following command in a seperate terminal window (ports 5432 and 8000 need to be free before running):
+   docker-compose -f docker-compose.local.yml
 
-To take down the API, run
-
-```
-make down
-```
+This will download and build all the docker images. When it is done, you will have the rest api running ad http://localhost:8000.
 
 ## Running the tests
 
